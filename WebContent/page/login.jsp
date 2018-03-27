@@ -14,7 +14,7 @@ request.setAttribute("path", basePath);
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>在线五子棋系统</title>
+  <title>五子棋OnLine</title>
   <link rel="stylesheet" type="text/css" href="${path}dist/components/reset.css">
   <link rel="stylesheet" type="text/css" href="${path}dist/components/site.css">
 
