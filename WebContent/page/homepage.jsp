@@ -12,26 +12,24 @@ request.setAttribute("path", basePath);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
 	<link rel="stylesheet" type="text/css" href="${path}semantic/dist/semantic.min.css">
-	<script src="${path}semantic/dist/semantic.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<%=path %>css/semantic.css">
-	<link rel="stylesheet" type="text/css" href="<%=path %>css/semantic.min.css">
-	<script src="css/semantic.min.js"></script>
-	<script src="css/jquery.min.js"></script>
+	<script src="${path}dist/semantic.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${path}dist/semantic.css">
+	<link rel="stylesheet" type="text/css" href="${path}dist/semantic.min.css">
+	<script src="${path}dist/semantic.min.js"></script>
+	<script src="${path}dist/jquery.min.js"></script>
 
 	<title>五子棋OnLine</title>
 	
 </head>
 <body style="background-color: gray;">
-	<div class="ui vertical inverted sticky menu"
-	style="left: 0px; top: -16px; width: 250px !important; height: 1813px !important; margin-top: 0px;">
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
-		<a class="item">a</a>
+	<div class="ui ">
+		
+	</div>
+	<div>
+		
+	</div>
+	<div>
+		
 	</div>
 </body>
 </html>
