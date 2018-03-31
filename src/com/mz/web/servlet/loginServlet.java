@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.awt.RepaintArea;
 
 import com.mz.service.us1Service;
 import com.mz.system.Tools;
@@ -44,9 +43,9 @@ public class loginServlet extends BaseServletSupport {
 			session.setAttribute("msg", msg);
 			return "GameOnline.html";
 		}
-		
+		//对页面密码进行加密重新写入dto
 		dto.put("us103", Tools.EncoderByMd5(dto.get("us103").toString()));
-		System.out.println(dto.get("us103"));
+		
 		Map<String,String> map=services.SearchUse();
 		if(map==null){
 			String msg="用户名不存在";
