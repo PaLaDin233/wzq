@@ -11,13 +11,13 @@ request.setAttribute("path", basePath);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	
-	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-	<script src="semantic/dist/semantic.min.js"></script>
-	<!--<link rel="stylesheet" type="text/css" href="../css/semantic.css">
-	<link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
-	<script src="../css/semantic.min.js"></script>
-	<script src="../css/jquery.min.js"></script>
-	 -->
+	<link rel="stylesheet" type="text/css" href="${path}semantic/dist/semantic.min.css">
+	<script src="${path}semantic/dist/semantic.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=path %>css/semantic.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>css/semantic.min.css">
+	<script src="css/semantic.min.js"></script>
+	<script src="css/jquery.min.js"></script>
+
 	<title>五子棋OnLine</title>
 	
 </head>
