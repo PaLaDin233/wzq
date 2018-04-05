@@ -20,7 +20,7 @@ public final class us1Service {
 		ResultSet rs=null;
 		try {
 			StringBuilder sql=new StringBuilder()
-			.append("SELECT us102,us103,us104,us105 from us1 ")
+			.append("SELECT us101,us102,us103,us104,us105 from us1 ")
 			.append("where us105='01' and us102=? ")
 			;
 			pstm=DBUtils.preparedStatement(sql.toString());

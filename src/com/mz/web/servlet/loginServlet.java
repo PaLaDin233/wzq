@@ -44,7 +44,7 @@ public class loginServlet extends BaseServletSupport {
 			return "GameOnline.html";
 		}
 		//对页面密码进行加密重新写入dto
-		dto.put("us103", Tools.EncoderByMd5(dto.get("us103").toString()));
+		//dto.put("us103", Tools.EncoderByMd5(dto.get("us103").toString()));
 		
 		Map<String,String> map=services.SearchUse();
 		if(map==null){
@@ -52,10 +52,13 @@ public class loginServlet extends BaseServletSupport {
 			session.setAttribute("msg", msg);
 			return "page/error.jsp";
 		}
+		//将数据库中的md5密码转小写，用于和页面密码对比
+		map.put("us103", map.get("us103").toString().toLowerCase());
 		success=(map.get("us103").toString().equals(dto.get("us103").toString()));
 		if (success) {
 			String msg="登录成功";
 			session.setAttribute("msg", msg);
+			session.setAttribute("user", map.get("us101"));
 			return "page/homepage.jsp";
 		} else {
 			String msg="密码错误";

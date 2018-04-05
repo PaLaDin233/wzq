@@ -26,15 +26,10 @@ request.setAttribute("path", basePath);
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+<script language='javascript' src='${path }js/md5.js'></script><!--引入MD5加密-->  
+
 <title>五子棋OnLine</title>	
 <style type="text/css">
-    body {
-      background-color: #DADADA;
-      background-image: url("<%=path%>/images/bg.jpg");
-    }
-    body > .col-xs-6 {
-      height: 100%;
-    }
     .image {
       height: 50px;
     }
@@ -48,13 +43,17 @@ request.setAttribute("path", basePath);
     }
     .center-vertical {
     position:relative;
-    top:50%;
-    transform:translateY(-50%);
+    top:20%;
     }
     
 	.title{
      	color:white;
 	}
+	
+	body {
+      background-color: #DADADA;
+      background-image: url("<%=path%>/images/bg.jpg");
+    }
 </style>
 </head>
 <body>
@@ -111,6 +110,7 @@ function checkForm(a) {
 			  alert("请输入密码");
 			  return false;
 		  }
+		  us103.value=hexMD5(us103.value);
 		  return true;
 	  }
 	};
