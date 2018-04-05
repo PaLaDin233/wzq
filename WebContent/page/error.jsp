@@ -10,30 +10,21 @@ request.setAttribute("path", basePath);
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-	
-	<link rel="stylesheet" type="text/css" href="../css/semantic.min.css">
-	<script src="../css/semantic.min.js"></script>
-	<script src="../css/jquery.min.js"></script>
-	
+      <!-- 引入 Bootstrap -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+      <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+      <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+      <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+
 	<title>五子棋OnLine</title>
-	<style type="text/css">
-	   body {
-	     background-color: #DADADA;
-	   }
-	   body > .grid {
-	     height: 100%;
-	   }
-	   .image {
-	     margin-top: -100px;
-	   }
-	   .column {
-	     max-width: 450px;
-	   }
-	</style>
 </head>
 
 <body>
-	<div class="ui message" style="display:display;">${sessionScope.msg }</div>
+	error:${sessionScope.msg }
 	<a href="#" onClick="javascript :history.back(-1);">返回</a>
 	
 

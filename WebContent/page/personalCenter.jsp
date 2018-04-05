@@ -30,50 +30,88 @@ request.setAttribute("path", basePath);
 	
 	<link href="${path }/css/main.css" rel="stylesheet"> 
 	<style type="text/css">
-		table{
-			border: medium;
+		.main{
+			/* position:absolute; */
+			height: 100%
+		}
+		td{
+			padding-top: 20px;
+			text-align: center;
+		}
+		input{
+			text-align: center;
+			width: 30%
+		}
+		.infotable{
+
+			width:60%;
+			margin: 0 auto; 
+			height: 100%;
 		}
 		body{
-			background:linear-gradient(to right,#ffffff,#00ccff);
+			/* background:linear-gradient(to right,#ffffff,#00ccff); */
 		}
 	</style>
 </head>
 <body>
-<br><br><br><br>
-<form action="${path }modinfo.html" method="get">
-	<table class="table-striped">
+<div class="main">
+	<form action="${path }modinfo.html" method="get">
+	<table class="infotable">
 		<tr>
 			<td>玩家编号</td>
-			<td><input type="text" name="us201" value="${sessionScope.userinfo.us201}" readonly="readonly"></td>
-			<td>状态</td>
+			<td><input name="us201" value="${sessionScope.userinfo.us201}" hidden="hidden">${sessionScope.userinfo.us201}</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>玩家名称</td>
-			<td><input type="text" name="us202" value="${sessionScope.userinfo.us202}"></td>
-			<td><button>修改</button></td>
+			<td><input class="form-control" type="text" name="us202" value="${sessionScope.userinfo.us202}"></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>玩家性别</td>
-			<td>男<input type="radio" name="us203" value="01">女<input type="radio" name="us203" value="00">${sessionScope.userinfo.us203}</td>
-			<td>状态</td>
+			<td>
+			<input value="${sessionScope.userinfo.us203}" hidden="hidden" id="sexop">
+			<select name="us203" id="sex">
+				<option value="01" onclick="formet(this)">男</option>
+				<option value="00" onclick="formet(this)">女</option>
+			</select>
+			</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>玩家积分</td>
 			<td>${sessionScope.userinfo.us204}</td>
-			<td>状态</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>注册时间</td>
 			<td>${sessionScope.userinfo.us206}</td>
-			<td>状态</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>玩家经验</td>
 			<td>${sessionScope.userinfo.us209}</td>
-			<td>状态</td>
+			<td></td>
+		</tr>
+		<tr>
+			
+			<td colspan="2"><button>修改</button></td>
+			
 		</tr>
 	</table>
 	
 </form>
+</div>
+
 </body>
+<script type="text/javascript">
+$(document).ready(function(){  
+	   $("#sex").val($("#sexop").val());  
+	   // loadValue('cli_sex',$("#sex").val());  
+	   // loadValue('cli_marriage',$("#marriage").val());  
+	   // loadValue('cli_education',$("#education").val());  
+	   // loadValue('cli_house',$("#houses").val());  
+	});
+</script>
+
 </html>

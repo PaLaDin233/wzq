@@ -24,29 +24,29 @@ request.setAttribute("path", basePath);
 	
 </head>
 <body>
-	<div class="container">
-		<div class="col-xs-2">
+	<div class="container-fruid" style="padding: 0px;">
+		<div class="col-xs-1" style="padding: 0px;">
 			<ul class="nav">
-				<li class="active"><a href="#" target="blank">首页</a></li>
-			</ul>
-			<ul class="nav">
-				<li class="active"><a href="#" target="blank">开始游戏</a></li>
-			</ul>
-			<ul class="nav">
+				<li class="active"><a href="${path }page/notice.jsp" target="blank">首页</a></li>
+			
+				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">开始游戏</a></li>
+			
+				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">好友管理</a></li>
+		
 				<li class="active"><a href="${path }personal.html?us101=${sessionScope.user}" target="blank">个人中心</a></li>
-			</ul>
-			<ul class="nav">
-				<li class="active"><a href="#" target="blank">首页</a></li>
-			</ul>
-			<ul class="nav">
-				<li class="active"><a href="#" target="blank">首页</a></li>
-			</ul>
-			<ul class="nav">
-				<li class="active"><a href="#" target="blank">首页</a></li>
+			
+				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">安全中心</a></li>
+			
+				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">系统设置</a></li>
+				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">关于我们</a></li>
+				<li class="active"><a href="${path }GameOnline.html">注销</a></li>
 			</ul>
 		</div>
-		<div class="col-xs-6" ><iframe name="blank" style="height: 100%;width: 100%"></iframe></div>
-		<div class="col-xs-4">a</div>
+		<div class="col-xs-8" ><iframe name="blank" src="${path }page/notice.jsp" style="height: 100%;width: 100%;border: medium;"></iframe></div>
+		<div class="col-xs-3">
+			<iframe name="" src="${path }page/playerListFrame.jsp" style="height: 40%;width: 100%;"></iframe>
+			<iframe name="" src="${path }page/chatFrame.jsp" style="height: 60%;width: 100%;"></iframe>
+		</div>
 	</div>
 </body>
 </html>

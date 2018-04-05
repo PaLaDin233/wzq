@@ -21,18 +21,21 @@ public abstract class BaseServletSupport extends HttpServlet {
      */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String toPath=null;
+		String toPath="page/error.jsp";
 		boolean nextPageMothed=false;
+		String path=request.getContextPath();
+		
 		try {
 			Map<String,Object> dto=this.createDto(request);
 			toPath=this.execute(dto,request,response);
 			nextPageMothed=this.nextPageMethod();
 		} catch (Exception e) {
 			request.setAttribute("msg", "网络故障");
+			System.out.println(path+"/page/error.jsp");
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-		String path=request.getContextPath();
+		
 		if(nextPageMothed)response.sendRedirect(path+"/"+toPath);//页面重定向，允许跳转到互联网的任意页面
 		else request.getRequestDispatcher("/"+toPath).forward(request, response);//服务器内部跳转
 	}

@@ -75,4 +75,37 @@ public final class Us2Services {
 		
 		return true;
 	}
+
+	public Map<String, String> searchPlayerInfoByPlayerId() throws Exception {
+		PreparedStatement pstm=null;
+		ResultSet rs =null;
+		
+		try {
+			StringBuilder sql= new StringBuilder()
+			.append("select us201,us202,us203,us204,us205,us206,us207,us208,us209,us210,us211 from us2 ")
+			.append("WHERE us201=? ");
+			
+			pstm=DBUtils.preparedStatement(sql.toString());
+			pstm.setObject(1, this.dto.get("us201"));
+
+			Map<String,String> map=null;
+			
+			rs=pstm.executeQuery();
+			if(rs.next()){
+				ResultSetMetaData rsmd=rs.getMetaData();
+				int count=rsmd.getColumnCount();
+				int initSize=((int)(count/.75))+1;
+				
+				map=new HashMap<>(initSize);
+				for(int i=1;i<count;i++){
+					map.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
+				}
+				
+			}
+			return map;
+		} finally {
+			DBUtils.close(rs);
+			DBUtils.close(pstm);
+		}
+	}
 }

@@ -1,4 +1,4 @@
-package com.mz.web.servlet;
+/*package com.mz.web.servlet;
 
 import java.util.Map;
 
@@ -34,3 +34,4 @@ public class EditInfoServlet extends BaseServletSupport {
 	}
 
 }
+*/
