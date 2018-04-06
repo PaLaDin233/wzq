@@ -35,7 +35,7 @@ request.setAttribute("path", basePath);
 		
 				<li class="active"><a href="${path }personal.html?us101=${sessionScope.user}" target="blank">个人中心</a></li>
 			
-				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">安全中心</a></li>
+				<li class="active"><a href="${path }page/securityCenter.jsp" target="blank">安全中心</a></li>
 			
 				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">系统设置</a></li>
 				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">关于我们</a></li>

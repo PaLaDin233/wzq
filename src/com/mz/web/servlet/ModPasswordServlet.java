@@ -1,6 +1,5 @@
 package com.mz.web.servlet;
 
-import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
@@ -8,16 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mz.service.us1Service;
 import com.mz.web.support.BaseServletSupport;
-@WebServlet("/GameOnline.html")
-public class login extends BaseServletSupport {
+@WebServlet("/ModPassword.html")
+public class ModPasswordServlet extends BaseServletSupport {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public login() {
+	public ModPasswordServlet() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -32,15 +32,20 @@ public class login extends BaseServletSupport {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		// TODO Auto-generated method stub
+		us1Service services=new us1Service(dto);
+		Map<String,String> map=services.SearchUserById();
 		HttpSession session=request.getSession();
-		Enumeration <String> sa=session.getAttributeNames();
-		while (sa.hasMoreElements()) {  
-			String name = sa.nextElement().toString();  
-			Object value = session.getAttribute(name);
-			
-			session.removeAttribute(name);
-		}  
-		return "page/login.jsp";
+		
+		if(map.get("us103").toString().toLowerCase().equals(dto.get("us103").toString())){
+			if(services.UpdatePassword())
+			session.setAttribute("msg", "修改成功");
+			else session.setAttribute("msg", "修改失败");
+			return "page/error.jsp";
+		}
+		else {
+			session.setAttribute("msg", "密码错误");
+			return "page/error.jsp";
+		}
 	}
 
 }

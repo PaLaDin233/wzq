@@ -24,7 +24,7 @@ request.setAttribute("path", basePath);
 </head>
 
 <body>
-	error:${sessionScope.msg }
+	Message:${sessionScope.msg }
 	<a href="#" onClick="javascript :history.back(-1);">返回</a>
 	
 

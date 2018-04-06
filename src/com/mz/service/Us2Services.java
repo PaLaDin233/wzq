@@ -65,7 +65,6 @@ public final class Us2Services {
 				i++;
 			}
 			sql.append(" WHERE (us201='"+dto.get("us201")+"')");
-			System.out.println(sql);
 			pstm=DBUtils.preparedStatement(sql.toString());
 			pstm.executeUpdate();
 		} finally{
