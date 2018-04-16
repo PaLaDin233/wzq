@@ -1,13 +1,10 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 request.setAttribute("path", basePath);  
-double d=Math.random();
-String rand = Double.toString(d);  
-session.setAttribute("rand",rand);
 %>  
 <html>
 <head>
@@ -17,8 +14,7 @@ session.setAttribute("rand",rand);
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>五子棋OnLine</title>
-  
+  <title>在线五子棋系统</title>
   <link rel="stylesheet" type="text/css" href="${path}dist/components/reset.css">
   <link rel="stylesheet" type="text/css" href="${path}dist/components/site.css">
 
@@ -41,21 +37,9 @@ session.setAttribute("rand",rand);
   <script src="${path}dist/components/form.js"></script>
   <script src="${path}dist/components/transition.js"></script>
 
- 	<link rel="stylesheet" type="text/css" href="${path }dist/semantic.css"/>
- 	<link rel="stylesheet" type="text/css" href="${path}dist/components/message.css"/>
- 	
-	<script src="${path }dist/semantic.min.js"></script>
-	<script src="${path }dist/jquery.min.js"></script>
-	
-	<script src="${path}page/assets/library/jquery.min.js"></script>
-	<script src="${path}dist/components/form.js"></script>
- 	<script src="${path}dist/components/transition.js"></script>
-
- 	
   <style type="text/css">
     body {
       background-color: #DADADA;
-      background-image: url("<%=path%>/images/bg.jpg");
     }
     body > .grid {
       height: 100%;
@@ -67,62 +51,36 @@ session.setAttribute("rand",rand);
       max-width: 450px;
     }
   </style>
- <script>
- $(document)
- .ready(function() {
-   $('.ui.form').form
-   ({
-       fields: {
-         us102: {
-           rules: [
-             {
-               type   : 'empty',
-               prompt : '请输入用户名'
-             }
-           ]
-         },
-         password: {
-           identifier  : 'us103',
-           rules: [
-             {
-               type   : 'empty',
-               prompt : '请输入密码'
-             }
-           ]
-         }
-       }
-     })
-   ;
- })
-;
-	function checkForm(a) {
-	  with(a){
-		  if(us102.value==null||us102.value==''){
-			  alert("请输入用户名");
-			  return false;
-		  }
-		  if(us103.value==null||us103.value==''){
-			  alert("请输入密码");
-			  return false;
-		  }
-		  return true;
-	  }
-	};
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form').form
+      ({
+          fields: {
+            us102: {
+              rules: [{type:'empty',prompt : '请输入用户名'}]
+            },
+            us103: {
+              rules: [{type:'empty',prompt : '请输入密码'}]
+            }
+          }
+        })
+      ;
+    })
+  ;
   </script>
 </head>
 <body>
 
 <div class="ui middle aligned center aligned grid">
-  <div class="column ui message" style="opacity:0.8;" id="loginbox" onmouseover="fun1();" onmouseout="fun2();">
+  <div class="column">
     <h2 class="ui teal image header">
       <img src="${path}images/logo.png" class="image">
-      <div>
-        	<div style="background: linear-gradient(to right, #000000, #00000f);
-        	-webkit-background-clip: text;
-        	color: transparent;">五子棋<i>ONLINE</i></div>
+      <div class="title">
+        	<div style="color:#111111">五子棋<i>ONLINE</i></div>
       </div>
     </h2>
-    <form class="ui large form" action="${path }login.html" id="loginForm" method="post" onsubmit="return checkForm(this)">
+    <form class="ui large form" action="${path }login.html" method="post" >
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
@@ -136,11 +94,10 @@ session.setAttribute("rand",rand);
             <input type="password" name="us103" placeholder="密码">
           </div>
         </div>
-        <div class="ui fluid large teal submit button" style="background-color: #111111;color: white">登录</div>
+        <div class="ui fluid large teal submit button" style="background-color: #111111;color: white"onclick='changeText()'>登录</div>
       </div>
-	   <input type="hidden" name="rand" value="<%=rand%>">  
+
       <div class="ui error message"></div>
-      <%-- <div class="ui message" style="display:display;">${sessionScope.msg }</div> --%>
     </form>
 
     <div class="ui message">
@@ -148,18 +105,7 @@ session.setAttribute("rand",rand);
     </div>
   </div>
 </div>
-</body>
 <script type="text/javascript">
-
-var a=document.getElementById("loginbox");
-function fun1(){
-	a.setAttribute("style", "opacity:0.9;");
-	alert(checkSubmitFlg);
-}
-function fun2(){
-	a.setAttribute("style", "opacity:0.7;")
-}
-
 </script>
-
+</body>
 </html>
