@@ -13,7 +13,11 @@ import java.util.Map.Entry;
 
 import com.mz.system.DBUtils;
 import com.mz.web.support.PageBean;
-
+/**
+ * 对Us2表的所有操作
+ * @author PaLaDin_
+ *
+ */
 public final class Us2Services {
 	private Map<String, Object> dto=null;
 	public Us2Services(Map<String,Object> dto) {
@@ -33,6 +37,7 @@ public final class Us2Services {
 			pstm.setObject(1, this.dto.get("us101"));
 
 			List<Map<String, String>> list=new ArrayList<Map<String,String>>();
+			//从数据库中读出数据列表
 			list=DBUtils.getListWithPstm(pstm);
 			
 			if(list.isEmpty())return null;
@@ -162,7 +167,7 @@ public final class Us2Services {
 	        	pstm.setObject(4, index);
 	        	pstm.setObject(5, count);
 				
-				System.out.println("a"+pstm);
+				//System.out.println("a"+pstm);
 				
 	            List<Map<String,String>> pageData = DBUtils.getListWithPstm(pstm);
 	            // 设置到pb对象中
@@ -193,7 +198,7 @@ public final class Us2Services {
 	        	
 	        	
 	        	rs=pstm.executeQuery();
-	        	System.out.println(pstm);
+	        	//System.out.println(pstm);
 	        	int count=0;
 	        	if(rs.next()){
 	        		count = Integer.parseInt(rs.getString(1));

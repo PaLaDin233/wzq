@@ -89,7 +89,7 @@ public class DBUtils {
 				Map<String,String> map=null;
 				map=new HashMap<>(initSize);
 				for(int i=1;i<=count;i++){
-					map.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
+					map.put(rsmd.getColumnLabel(i), rs.getString(i));
 				}
 				list.add(map);
 			}

@@ -71,7 +71,7 @@ request.setAttribute("path", basePath);
 	
 </head>
 <body>
-<form action="${path }userList.html" method="get" onsubmit="return checkform(this)">
+<form action="${path }userList.html" method="get" onsubmit="return checkform(this)" id="form">
 <div class="container" style="border-bottom:dotted thin;">
 <br><br>
 	
@@ -133,26 +133,12 @@ request.setAttribute("path", basePath);
               <td colspan="3" align="center">
                   当前${requestScope.pageBean.currentPage }/${requestScope.pageBean.totalPage }页     &nbsp;&nbsp;
                   <input type="hidden" value="${requestScope.pageBean.currentPage}" name="currentPage" id="currentPage">
-                  <a href="${path }userList.html?
-                  currentPage=1&
-                  us210=${sessionScope.us210 }&
-                  us201=${sessionScope.us201 }&
-                  us202=${sessionScope.us202 }">首页</a>
-                  <a href="${path }userList.html?
-                  currentPage=${requestScope.pageBean.currentPage-1}&
-                  us210=${sessionScope.us210 }&
-                  us201=${sessionScope.us201 }&
-                  us202=${sessionScope.us202 }">上一页 </a>
-                  <a href="${path }userList.html?
-                  currentPage=${requestScope.pageBean.currentPage+1}&
-                  us210=${sessionScope.us210 }&
-                  us201=${sessionScope.us201 }&
-                  us202=${sessionScope.us202 }">下一页 </a>
-                  <a href="${path }userList.html?
-                  currentPage=${requestScope.pageBean.totalPage}&
-                  us210=${sessionScope.us210 }&
-                  us201=${sessionScope.us201 }&
-                  us202=${sessionScope.us202 }">末页</a>
+                  <input type="hidden" value="${requestScope.pageBean.totalPage}" name="totalPage" id="totalPage">
+                  
+                  <a href="#" onclick="subm(0)">首页</a>
+                  <a href="#" onclick="subm(-1)">上一页 </a>
+                  <a href="#" onclick="subm(1)">下一页 </a>
+                  <a href="#" onclick="subm(${requestScope.pageBean.totalPage})">末页</a>
               </td>
           </tr>
 
@@ -164,13 +150,13 @@ request.setAttribute("path", basePath);
 function subm(a){
 	var page=document.getElementById("currentPage");
 	
-	switch (a){
-	case 1:
-		page.valueOf()+a;
-		break;
-	case -1:
-		break;
-	}
+	if(a==0)page.value=1;
+	else if(a==1||a==-1)page.value=parseInt(page.value)+a;
+	else page.value=a;
+	
+	var f=document.getElementById("form");
+	if(checkform(f))
+		f.submit();
 }
 
 </script>

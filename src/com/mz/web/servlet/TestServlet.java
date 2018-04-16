@@ -26,8 +26,10 @@ public class TestServlet extends BaseServletSupport {
 	protected String execute(Map<String, Object> dto,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		Text text=new Text();
-		return null;
+		//Text text=new Text();
+		System.out.println(dto.get("test").toString());
+		request.getSession().setAttribute("test", dto.get("test").toString());
+		return "page/NewFile.jsp";
 	}
 
 }

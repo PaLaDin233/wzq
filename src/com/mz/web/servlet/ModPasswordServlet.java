@@ -36,7 +36,8 @@ public class ModPasswordServlet extends BaseServletSupport {
 		Map<String,String> map=services.SearchUserById();
 		HttpSession session=request.getSession();
 		
-		if(map.get("us103").toString().toLowerCase().equals(dto.get("us103").toString())){
+		//System.out.println(map);
+		if(map.get("us103").toString().equals(dto.get("us103").toString())){
 			if(services.UpdatePassword())
 			session.setAttribute("msg", "修改成功");
 			else session.setAttribute("msg", "修改失败");

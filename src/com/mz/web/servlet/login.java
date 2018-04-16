@@ -18,12 +18,12 @@ public class login extends BaseServletSupport {
 	private static final long serialVersionUID = 1L;
 
 	public login() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
 	protected boolean nextPageMethod() throws Exception {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
@@ -31,12 +31,12 @@ public class login extends BaseServletSupport {
 	protected String execute(Map<String, Object> dto,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
+		
 		HttpSession session=request.getSession();
 		Enumeration <String> sa=session.getAttributeNames();
 		while (sa.hasMoreElements()) {  
 			String name = sa.nextElement().toString();  
-			Object value = session.getAttribute(name);
+			//Object value = session.getAttribute(name);
 			
 			session.removeAttribute(name);
 		}  

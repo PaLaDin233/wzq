@@ -14,10 +14,16 @@ import java.util.Map;
  */
 public class PageBean<T> {
     private int currentPage = 1; // 当前页, 默认显示第一页
-    private int pageCount = 1;   // 每页显示的行数(查询返回的行数), 默认每页显示4行
+    private int pageCount = 5;   // 每页显示的行数(查询返回的行数), 默认每页显示5行
     private int totalCount;      // 总记录数
     private int totalPage;       // 总页数 = 总记录数 / 每页显示的行数  (+ 1)
     private List<T> pageData;       // 分页查询到的数据
+    
+    public PageBean(int pageCount){
+    	this.pageCount=pageCount;
+    	System.out.println("创建PageBean类ing...");
+    	
+    }
     
     // 返回总页数
     public int getTotalPage() {

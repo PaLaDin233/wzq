@@ -56,15 +56,17 @@ public class FindUserServlet extends BaseServletSupport {
             // 转换
             int currentPage = Integer.parseInt(currPage);
             
+            int pageNum=1;//每页数据列数
+            
             //2. 创建PageBean对象，设置当前页参数； 传入service方法参数
-            PageBean<Map<String,String>> pageBean = new PageBean<Map<String,String>>();
+            PageBean<Map<String,String>> pageBean = new PageBean<Map<String,String>>(pageNum);
             pageBean.setCurrentPage(currentPage);
             
             //3. 调用service  
             Us2Services services=new Us2Services(dto);
             services.getAll(pageBean);    // 【pageBean已经被dao填充了数据】
             
-            System.out.println(pageBean.getPageData());
+          //  System.out.println(pageBean.getPageData());
             //4. 保存pageBean对象，到request域中
             request.setAttribute("pageBean", pageBean);
             
