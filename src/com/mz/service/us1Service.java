@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -77,7 +78,13 @@ public final class us1Service {
 			pstm.setObject(1, this.dto.get("us101"));
 			
 			rs=pstm.executeQuery();
-			Map<String,String> map=null;
+			
+			List<Map<String, String>> list=null;
+			list=DBUtils.getListWithPstm(pstm);
+			
+			if(list.isEmpty())return null;
+			else return list.get(0);
+			/*Map<String,String> map=null;
 			if(rs.next()){
 				ResultSetMetaData rsmd=rs.getMetaData();
 				int count=rsmd.getColumnCount();
@@ -88,7 +95,7 @@ public final class us1Service {
 					map.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
 				}
 			}
-			return map;
+			return map;*/
 		}
 		finally{
 			DBUtils.close(rs);

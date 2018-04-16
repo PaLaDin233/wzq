@@ -4,6 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.lang.ThreadLocal;
 public class DBUtils {
 	private static String driver=
@@ -64,4 +69,34 @@ public class DBUtils {
     public static PreparedStatement preparedStatement(String sql)throws Exception{
     	return DBUtils.getConnection().prepareStatement(sql);
     }
+    
+    
+    public static List<Map<String, String>> getListWithPstm(PreparedStatement pstm) 
+			throws Exception {
+		
+		ResultSet rs=null;
+		
+		try {
+			
+			rs=pstm.executeQuery();
+			
+			List<Map<String,String>> list=new ArrayList<Map<String,String>>();
+			while(rs.next()){
+				ResultSetMetaData rsmd=rs.getMetaData();
+				int count=rsmd.getColumnCount();
+				int initSize=((int)(count/.75))+1;				
+				
+				Map<String,String> map=null;
+				map=new HashMap<>(initSize);
+				for(int i=1;i<=count;i++){
+					map.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
+				}
+				list.add(map);
+			}
+			return list;
+		} finally {
+			DBUtils.close(rs);
+			DBUtils.close(pstm);
+		}
+	}
 }

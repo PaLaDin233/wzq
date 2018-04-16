@@ -31,7 +31,7 @@ request.setAttribute("path", basePath);
 			
 				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">开始游戏</a></li>
 			
-				<li class="active"><a href="${path }page/ToBeContinue.jsp" target="blank">好友管理</a></li>
+				<li class="active"><a href="${path }page/findUser.jsp" target="blank">查找用户</a></li>
 		
 				<li class="active"><a href="${path }personal.html?us101=${sessionScope.user}" target="blank">个人中心</a></li>
 			

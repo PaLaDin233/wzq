@@ -45,7 +45,7 @@ public class loginServlet extends BaseServletSupport {
 		}
 		//对页面密码进行加密重新写入dto
 		//dto.put("us103", Tools.EncoderByMd5(dto.get("us103").toString()));
-		
+		System.out.println(dto.get("us103").toString());
 		Map<String,String> map=services.SearchUse();
 		if(map==null){
 			String msg="用户名不存在";
